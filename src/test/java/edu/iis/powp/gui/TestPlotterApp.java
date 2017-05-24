@@ -16,6 +16,8 @@ import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
 import edu.iis.powp.events.SelectRunCurrentCommandOptionListener;
 import edu.iis.powp.events.SelectTestFigure2OptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iis.powp.ink.InkManagerWindow;
+import edu.iis.powp.ink.InkWindowInkChangeObserver;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.LineFactory;
 
@@ -78,6 +80,16 @@ public class TestPlotterApp {
 				commandManager);
 		FeaturesManager.getPlotterCommandManager().getChangePublisher().addSubscriber(windowObserver);
 	}
+        
+        private static void setupInk(Application application) {
+
+		InkManagerWindow inkManager = new InkManagerWindow(FeaturesManager.getPlotterCommandManager());
+		application.addInkComponent("Ink Manager", inkManager);
+
+		InkWindowInkChangeObserver windowObserver = new InkWindowInkChangeObserver(
+				inkManager);
+		FeaturesManager.getPlotterCommandManager().getChangePublisher().addSubscriber(windowObserver);
+	}
 
 	/**
 	 * Setup menu for adjusting logging settings.
@@ -113,6 +125,7 @@ public class TestPlotterApp {
 				setupCommandTests(app);
 				setupLogger(app);
 				setupWindows(app);
+                                setupInk(app);
 
 				app.setVisibility(true);
 			}

@@ -47,6 +47,12 @@ public class PlotterGUI extends JFrame {
 	 * Window menu.
 	 */
 	private JMenu windowMenu = null;
+        
+        
+        /**
+	 * Window menu.
+	 */
+	private JMenu InkMenu = null;
 
 	/**
 	 * Test menu.
@@ -151,6 +157,12 @@ public class PlotterGUI extends JFrame {
 		 */
 		windowMenu = new JMenu("Windows");
 		menuBar.add(windowMenu);
+                
+                		/*
+		 * Window menu
+		 */
+		InkMenu = new JMenu("Ink");
+                menuBar.add(InkMenu);
 
 		/*
 		 * Main girdBagLayout - left Layout + command history.
@@ -262,6 +274,12 @@ public class PlotterGUI extends JFrame {
 		JMenuItem windowMenuButton = new JMenuItem(label);
 		windowMenuButton.addActionListener(listener);
 		windowMenu.add(windowMenuButton);
+	}
+        
+        public void addNewInkMenuListener(ActionListener listener, String label) {
+		JMenuItem InkMenuButton = new JMenuItem(label);
+		InkMenuButton.addActionListener(listener);
+		InkMenu.add(InkMenuButton);
 	}
 
 	public void addNewTestMenuListener(ActionListener listener, String label) {

@@ -77,6 +77,33 @@ public class Application {
 		SelectWindowComponentMenuOptionListener listener = new SelectWindowComponentMenuOptionListener(window);
 		gui.addNewWindowMenuListener(listener, name);
 	}
+        
+        /**
+	 * Add driver to context, create button in driver menu.
+	 * 
+	 * @param name
+	 *            Window name.
+	 * @param window
+	 *            Window object.
+	 */
+	public void addJFrameInk(String name, JFrame window) {
+		SelectJFrameWindowMenuOptionListener listener = new SelectJFrameWindowMenuOptionListener(window);
+		gui.addNewInkMenuListener(listener, name);
+		window.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+	}
+
+	/**
+	 * Add driver to context, create button in driver menu.
+	 * 
+	 * @param name
+	 *            Window name.
+	 * @param window
+	 *            Window object.
+	 */
+	public void addInkComponent(String name, WindowComponent window) {
+		SelectWindowComponentMenuOptionListener listener = new SelectWindowComponentMenuOptionListener(window);
+		gui.addNewInkMenuListener(listener, name);
+	}
 
 	/**
 	 * Add button in test menu.
